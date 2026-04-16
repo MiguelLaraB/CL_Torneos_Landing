@@ -1,0 +1,79 @@
+---
+const tournaments = [
+    { game: "League of Legends", date: "19 - Dic", prize: "700$" },
+    { game: "Valorant", date: "24 - May", prize: "500$" },
+    { game: "League of Legends", date: "19 - Dic", prize: "700$" },
+    { game: "Valorant", date: "24 - May", prize: "500$" },
+    { game: "League of Legends", date: "19 - Dic", prize: "700$" },
+    { game: "Valorant", date: "24 - May", prize: "500$" },
+];
+---
+
+<aside class="tournaments-sidebar">
+    <h2 class="sidebar-title">NEXT TOURNAMENTS</h2>
+    <div class="tournament-list">
+        {
+            tournaments.map((t) => (
+                <div class="tournament-card">
+                    <div class="t-game">{t.game.toUpperCase()}</div>
+                    <div class="t-date">{t.date}</div>
+                    <div class="t-prize">{t.prize}</div>
+                </div>
+            ))
+        }
+    </div>
+</aside>
+
+<style>
+    .tournaments-sidebar {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .sidebar-title {
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    .tournament-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .tournament-card {
+        background-color: var(--color-card);
+        padding: 1rem;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .t-game {
+        color: #e5b32f; /* Alternative LOL gold */
+        font-size: 0.8rem;
+        font-weight: bold;
+        width: 30%;
+        line-height: 1.2;
+    }
+    .tournament-card:nth-child(even) .t-game {
+        color: #ff4655; /* Valorant Red */
+    }
+    .t-date {
+        font-size: 1rem;
+        width: 40%;
+        text-align: center;
+    }
+    .t-prize {
+        font-size: 1.1rem;
+        width: 30%;
+        text-align: right;
+    }
+
+    @media (max-width: 1024px) {
+        .tournaments-sidebar {
+            width: 100%;
+        }
+    }
+</style>

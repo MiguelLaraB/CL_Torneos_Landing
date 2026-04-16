@@ -1,0 +1,140 @@
+---
+---
+
+<header class="navbar">
+    <div class="nav-brand-container">
+        <div class="nav-left">
+            <a href="/" class="btn-cream">ARENAGG</a>
+        </div>
+        <button
+            id="mobile-menu-btn"
+            class="mobile-menu-btn"
+            aria-label="Toggle Menu"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <div id="nav-wrapper" class="nav-wrapper">
+        <nav class="nav-center">
+            <a href="#" class="btn-cream">MAIN</a>
+            <a href="#" class="btn-cream">TOURNAMENTS</a>
+            <a href="#" class="btn-cream">RANKING</a>
+        </nav>
+        <div class="nav-right">
+            <a href="#" class="btn-cream login-btn">LOGIN</a>
+        </div>
+    </div>
+</header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("mobile-menu-btn");
+        const wrapper = document.getElementById("nav-wrapper");
+
+        if (btn && wrapper) {
+            btn.addEventListener("click", () => {
+                wrapper.classList.toggle("nav-open");
+            });
+        }
+    });
+</script>
+
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        position: relative;
+    }
+    .nav-brand-container,
+    .nav-wrapper {
+        /* Para no romper el Flexbox original en Desktop */
+        display: contents;
+    }
+    .nav-center {
+        display: flex;
+        gap: 0.5rem;
+    }
+    .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--color-text);
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            padding: 1rem;
+        }
+        .nav-brand-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-wrapper {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 0;
+            margin-top: 1rem;
+            gap: 1rem;
+            animation: fadeIn 0.3s ease;
+        }
+        .nav-wrapper.nav-open {
+            display: flex;
+        }
+        .nav-center {
+            flex-direction: column;
+            width: 100%;
+            gap: 0.8rem;
+        }
+        .nav-center .btn-cream,
+        .nav-right .btn-cream {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 0.8rem;
+        }
+        .nav-right {
+            width: 100%;
+        }
+        .mobile-menu-btn {
+            display: block;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

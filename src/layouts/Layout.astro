@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="ARENAGG Landing Page" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <script is:inline>
+            (function () {
+                const isSlow =
+                    ("deviceMemory" in navigator &&
+                        navigator.deviceMemory < 4) ||
+                    ("hardwareConcurrency" in navigator &&
+                        navigator.hardwareConcurrency < 4) ||
+                    ("connection" in navigator &&
+                        navigator.connection.saveData === true);
+                if (isSlow) {
+                    document.documentElement.classList.add("reduce-animations");
+                }
+            })();
+        </script>
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>
