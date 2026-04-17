@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import bgVideo from "../assets/video_baclground.mp4";
 
 interface Props {
     title: string;
@@ -33,6 +34,14 @@ const { title } = Astro.props;
         </script>
     </head>
     <body>
+        <video 
+            src={bgVideo} 
+            autoplay 
+            loop 
+            muted 
+            playsinline
+            class="bg-video"
+        ></video>
         <slot />
     </body>
 </html>
